@@ -1,12 +1,16 @@
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  const allAnimals = {};
+  const [...residents] = data.species;
+  console.log(residents.length);
   if (animal === undefined) {
-    return data.species.map((specie) => (`${specie.name}: ${specie.popularity}`));
+    return data.species.map((specie) => (
+      `${specie.name}: ${specie.residents.length}`
+    ));
   }
-  const showMe = { allAnimals };
-  return showMe;
+  if (animal.length === 1) {
+    return data.species.filter((specie) => animal.includes(specie.residents));
+  }
 }
 
 console.log(countAnimals());
