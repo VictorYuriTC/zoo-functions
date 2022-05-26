@@ -11,7 +11,7 @@ function getEmployeeByName(employeeName) {
   console.log(allLastNames);
   const allNames = [...allFirstNames, ...allLastNames];
   console.log(allNames);
-  return allNames.map((name) => name === employeeName);
+  console.log(Object.values(employees));
 }
 
 console.log(getEmployeeByName('Nigel'));
