@@ -1,19 +1,16 @@
 const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+/* Solved with MD's example given in a thread :) */
+
 function getEmployeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  const allFirstNames = employees.map((employee) => employee.firstName);
-  console.log(allFirstNames);
-  const allLastNames = employees.map((employee) => employee.lastName);
-  console.log(allLastNames);
-  const allNames = [...allFirstNames, ...allLastNames];
-  console.log(allNames);
-  console.log(Object.values(employees));
+  return employees.find((employee) => employee.firstName === employeeName
+  || employee.lastName === employeeName);
 }
 
-console.log(getEmployeeByName('Nigel'));
+console.log(getEmployeeByName('Nelson'));
 
 module.exports = getEmployeeByName;
