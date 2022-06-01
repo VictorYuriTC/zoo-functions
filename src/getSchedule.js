@@ -8,7 +8,8 @@ function getSchedule(scheduleTarget) {
   }
   if (scheduleTarget === undefined) {
     const officeHour = data.hours;
-    return officeHour;
+    const hours = Object.values(officeHour);
+    return hours[0];
   }
 }
 

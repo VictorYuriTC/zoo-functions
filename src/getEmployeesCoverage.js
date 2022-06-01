@@ -1,10 +1,12 @@
 const data = require('../data/zoo_data');
 
 function getEmployeeResponsabilities(employeeNameOrId) {
-  const employeeObject = employeeNameOrId;
   const selectedEmployee = data.employees.find((employee) =>
-    employee.firstName === employeeObject.name
-    || employee.lastName === employeeObject.name || employee.id === employeeObject.id);
+    employee.firstName === employeeNameOrId.name
+    || employee.lastName === employeeNameOrId.name || employee.id === employeeNameOrId.id);
+  if (selectedEmployee === undefined) {
+    throw new Error('Informações inválidas');
+  }
   const responsabilities = selectedEmployee.responsibleFor.filter((responsability) =>
     responsability);
   return responsabilities;
@@ -27,10 +29,6 @@ function getResponsabilitiesSpecies(employeeNameOrId) {
 
 function getEmployeesCoverage(employeeNameOrId) {
   const employeeObject = employeeNameOrId;
-  if (employeeObject === undefined) {
-    const allEmployeesResponsabilities = data.employees.map((employee) => employee.responsibleFor);
-    return allEmployeesResponsabilities;
-  }
   const species = getResponsabilitiesSpecies(employeeObject);
   const locations = getResponsabilitiesLocations(employeeObject);
   const selectedEmployee = data.employees.find((employee) =>
@@ -41,7 +39,7 @@ function getEmployeesCoverage(employeeNameOrId) {
   return { id, fullName, species, locations };
 }
 
-const randomObject = { name: 'Nigel', id: 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1' };
+const randomObject = { name: 'Nelson' };
 
 console.log(getEmployeesCoverage(randomObject));
 
