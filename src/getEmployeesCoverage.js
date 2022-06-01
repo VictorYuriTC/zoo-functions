@@ -58,6 +58,6 @@ function getEmployeesCoverage(employeeNameOrId) {
 
 const randomObject = { name: 'Nelson' };
 
-console.log(getEmployeesCoverage());
+console.log(getEmployeesCoverage(randomObject));
 
 module.exports = getEmployeesCoverage;
